@@ -1,0 +1,2 @@
+
+            paddingLeft: "60px",
