@@ -11,7 +11,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/recipes");
+        const response = await axios.get("http://localhost:3002/recipes");
         setRecipes(response.data);
       } catch (err) {
         console.log(err);
@@ -21,7 +21,7 @@ export const Home = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipes/savedRecipes/ids/${userID}`
+          `http://localhost:3002/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -35,7 +35,7 @@ export const Home = () => {
 
   const saveRecipe = async (recipeID) => {
     try {
-      const response = await axios.put("http://localhost:8000/recipes", {
+      const response = await axios.put("http://localhost:3002/recipes", {
         recipeID,
         userID,
       });
@@ -63,7 +63,7 @@ export const Home = () => {
         backgroundAttachment: "scroll",
       }}
     >
-      <h1 className="Heading font-bold items-center ">All Made Recipes</h1>
+      <h1 className="Heading font-bold items-center text-xl ml-{10px}  " style={{marginLeft:"400px", marginBottom:"20px"}}>All Made Recipes</h1>
       <ul
         style={{
           display: "grid",

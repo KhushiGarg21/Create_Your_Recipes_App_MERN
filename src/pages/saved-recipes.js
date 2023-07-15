@@ -11,7 +11,7 @@ export const SavedRecipes = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipes/savedRecipes/${userID}`
+          `http://localhost:3002/recipes/savedRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (err) {
@@ -57,8 +57,8 @@ export const SavedRecipes = () => {
                 }}
               >
                 <img
-                  className="rounded-[20px] z-10 h-full w-[480px] p-2"
-                  
+                  // className="rounded-[20px] z-10 h-full w-[480px] p-2"
+                  className="rainbow"
                   src={recipe.imageUrl}
                   alt={recipe.name}
                 />
@@ -69,7 +69,7 @@ export const SavedRecipes = () => {
                 >
                   {recipe.name.toUpperCase()}
                   {/* {recipe.ingredients} */}
-                  <p className="block">{recipe.ingredients}</p>
+                  <p className="block">{recipe.description}</p>
                   <p className="m-[265px] ml-[140px] flex w-full">Cooking Time: {recipe.cookingTime} minutes</p>
                 </div>
               </div>

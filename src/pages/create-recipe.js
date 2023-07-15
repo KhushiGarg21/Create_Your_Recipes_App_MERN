@@ -41,7 +41,7 @@ export const CreateRecipe = () => {
     event.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8000/recipes",
+        "http://localhost:3002/recipes",
         { ...recipe },
         {
           headers: { authorization: cookies.access_token },
@@ -61,184 +61,171 @@ export const CreateRecipe = () => {
       style={{
         backgroundImage: `url(${
           process.env.PUBLIC_URL +
-          "https://i.pinimg.com/originals/b2/36/e1/b236e1a66a14aaf0e6c52d5af24939ef.jpg"
+          "https://images.orientbell.com/media/catalog/product/cache/b9393dc52362842095b7f55239e9b36f/b/d/bdw_texus_brown.jpg"
         })`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: "100%",
-        height: "560px",
+        height: "610px",
         marginTop: "1px",
       }}
     >
-
-      <form
-        onSubmit={handleSubmit}
-        
-      >
-        <div style={{
-          width: "1600px",
-          // color: "white",
-          marginTop: "20px",
-          marginLeft: "100px",
-          display:"grid",
-          gridTemplateColumns:"auto auto"
-        }}>
-        <div style={{ display: "flex", marginBottom: "35px", width:"400px" }}>
-          <label
-            style={{
-              marginLeft: "45px",
-              marginRight: "58px",
-              marginTop: "4px",
-              fontSize: "30px",
-              width: "80px",
-            }}
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            style={{ marginTop: "5px", width:"300px", marginLeft:"20px" }}
-            type="text"
-            id="name"
-            name="name"
-            value={recipe.name}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div style={{ display: "flex", marginBottom: "25px", marginLeft:"10px", marginRight:"320px" }}>
-          <label
-            style={{ marginLeft: "2px", marginTop: "8px", fontSize: "20px" }}
-            htmlFor="description"
-          >
-            Description
-          </label>
-          <textarea
-            style={{ marginLeft: "60px", marginTop: "5px", height:"36px" }}
-            rows="1"
-            cols="25"
-            id="description"
-            name="description"
-            value={recipe.description}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-
-        <div style={{ display: "flex", marginBottom: "25px", width:"400px", marginTop:"50px"}}>
-          <label
-            style={{
-              marginLeft: "34px",
-              marginRight: "78px",
-              marginTop: "4px",
-              fontSize: "30px",
-              width: "60px",
-            }}
-            htmlFor="ingredients"
-          >
-            Ingredients
-          </label>
-          {recipe.ingredients.map((ingredient, index) => (
-            <input
-              style={{ marginTop: "20px", width:"600px"  }}
-              key={index}
-              type="text"
-              name="ingredients"
-              value={ingredient}
-              onChange={(event) => handleIngredientChange(event, index)}
-            />
-          ))}
-
-          <button type="button" style={{height:"36px"}} onClick={handleAddIngredient}>
-            Add Ingredient
-          </button>
-        </div>
-        <div style={{ display: "flex", marginBottom: "25px" }}>
-          <label
-            style={{
-              marginLeft: "13px",
-              marginRight: "78px",
-              marginTop: "15px",
-              fontSize: "30px",
-              width: "60px",
-            }}
-            htmlFor="instructions"
-          >
-            Instructions
-          </label>
-          <textarea
-            style={{ marginTop: "10px", height:"36px", marginLeft:"28px" }}
-            rows="1"
-            cols="25"
-            id="instructions"
-            name="instructions"
-            value={recipe.instructions}
-            onChange={handleChange}
-          ></textarea>
-        </div>
-
-        <div style={{ display: "flex", marginBottom: "25px", marginTop:"50px" }}>
-          <label
-            style={{
-              marginLeft: "38px",
-              marginTop: "4px",
-              fontSize: "30px",
-              width: "full",
-              display: "flex",
-              height: "20px",
-            }}
-            htmlFor="imageUrl"
-          >
-            Image URL
-          </label>
-          <input
-            style={{ marginTop: "10px",marginLeft: "18px", height:"22px" }}
-            type="text"
-            id="imageUrl"
-            name="imageUrl"
-            value={recipe.imageUrl}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div style={{ display: "flex", marginBottom: "10px" }}>
-          <label
-            style={{
-              marginLeft: "20px",
-              marginRight: "78px",
-              marginTop: "4px",
-              fontSize: "20px",
-              width: "60px",
-              height: "20px",
-            }}
-            htmlFor="cookingTime"
-          >
-            Cooking Time (minutes)
-          </label>
-          <input
-            style={{ marginTop: "10px", marginLeft:"20px" }}
-            type="number"
-            id="cookingTime"
-            name="cookingTime"
-            value={recipe.cookingTime}
-            onChange={handleChange}
-          />
-        </div>
-        </div>
-        <button className=" animate-bounce"
-          style={{
-            marginLeft: "1200px",
-            marginTop: "140px",
-            paddingLeft: "60px",
-            fontSize: "20px",
-            width: "240px",
-            display: "flex",
-  
-          }}
-          type="submit"
+      <form onSubmit={handleSubmit} className="">
+        <h1 className="font-extrabold animate-bounce text-center text-2xl mt-6">
+          Submit Your Recipe
+        </h1>
+        <p
+          className="Heading p-3 text-xl rounded-2xl"
+          style={{ marginLeft: "580px", width: "360px" }}
         >
-          Create Recipe
-        </button>
+          We might feature it on our instagram!{" "}
+        </p>
+
+        <div
+          style={{
+            backgroundColor: "white",
+            width: "900px",
+            color: "white",
+            padding: "30px",
+            marginTop: "20px",
+            marginLeft: "310px",
+          }}
+        >
+          <div className="grid grid-cols-2">
+            {/* NAME */}
+            <div>
+              <label
+                style={{ color: "black", marginLeft: "4px" }}
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <br />
+              <div className="flex">
+                <input
+                  style={{ margin: "4px", marginTop: "4px", width: "160px", color:"black" }}
+                  type="text"
+                  placeholder="First Name"
+                  required
+                  id="name"
+                  name="name"
+                  value={recipe.name}
+                  onChange={handleChange}
+                ></input>
+                <input
+                  style={{ margin: "4px", marginTop: "4px", width: "160px", color:"black" }}
+                  type="name"
+                  placeholder="Last Name"
+                  required
+                ></input>
+              </div>
+            </div>
+            {/* EMAIL */}
+            <div style={{ marginLeft: "170px" }}>
+              <label style={{ color: "black", marginLeft: "4px" }}>Email</label>
+              <br />
+              <div className="flex">
+                <input
+                  style={{ margin: "4px", width: "230px", color:"black" }}
+                  type="text"
+                  placeholder="example@example.com"
+                  required
+                ></input>
+              </div>
+            </div>
+            {/* RECIPE */}
+            <div style={{ marginTop: "8px" }}>
+              <label
+                style={{ color: "black", marginLeft: "4px" }}
+                htmlFor="description"
+              >
+                Recipe
+              </label>
+              <br />
+              <textarea
+                style={{
+                  margin: "4px",
+                  marginTop: "4px",
+                  width: "820px",
+                  height: "150px",
+                  color:"black"
+                }}
+                // class="recipe_input"
+                id="description"
+                name="description"
+                value={recipe.description}
+                onChange={handleChange}
+                type="text"
+                placeholder="Tell us about your recipe"
+                required
+              ></textarea>
+            </div>
+
+            <br />
+            {/* ImageURL */}
+            <div>
+              <label
+                style={{
+                  color: "black",
+                }}
+                htmlFor="imageUrl"
+              >
+                Image URL
+              </label>
+              <br />
+              <input
+                style={{
+                  width: "820px", color:"black"
+                }}
+                type="text"
+                id="imageUrl"
+                name="imageUrl"
+                value={recipe.imageUrl}
+                onChange={handleChange}
+              />
+            </div>
+
+            <br />
+            <hr style={{ color: "red" }}></hr>
+          </div>
+
+          <button
+            className=""
+            style={{
+              marginLeft: "360px",
+              marginTop: "14px",
+              padding: "5px 15px",
+              fontSize: "20px",
+              backgroundColor: "#d1d1d1",
+              color: "black",
+            }}
+            type="submit"
+          >
+            Submit
+          </button>
+
+          <h1
+            className="submit font-black"
+            style={{
+              color: "black",
+              border: "2px solid black",
+              borderRadius: "2rem",
+              width: "40px",
+              padding: "4px",
+            }}
+          >
+            Sub
+          </h1>
+
+          {/* form ends here */}
+        </div>
       </form>
+
+      <div
+        style={{ backgroundColor: "black", marginTop: "20px", height: "35px" }}
+      >
+        helo
+      </div>
     </div>
   );
 };
